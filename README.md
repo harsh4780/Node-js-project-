@@ -37,6 +37,10 @@ raw queries will go here.
 ### Setup the project 
 
 - Download the template from github and open it in your favorite test editor
+- Go inside the folder part and execute the following command 
+``` 
+    npm install 
+
 - In the root directory create a new `env` file and add the following env variables'
     ```
         PORT => port number of your choice
@@ -73,9 +77,23 @@ raw queries will go here.
   }
 }
 
+
+- go inside a `src` folder and execute following command
 ```
+    npx sequelize init 
+
+```
+- By executing the above command you will get migration and seeders folder along with a config.json 
+inside the config folder 
+
 - If You are setting up your development environment , then write the name of your development username of your db
 and password of your db and dilect mentioned whatever db you are using for ex:
 mysql , mariadb etc
 
 - If you're setting up test or prod enviourment , make sure you also the host with hosted db url 
+
+
+- To run the server execute
+```
+npm run dev 
+```
