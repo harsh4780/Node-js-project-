@@ -42,12 +42,16 @@ class crudRepository {
     }
     
     async update(id,data){ // data is a object=> {column and value}
+
         
-            const response = await this.model.update(data,{
+            const response = await this.model.update({capacity:data},{
                 where:{
                     id:id,
                 }
             });
+            if(!response){
+                throw new AppError('Airplane not found', StatusCodes.NOT_FOUND);  // 404 Not Found error
+            }
             return response;
     }
         
