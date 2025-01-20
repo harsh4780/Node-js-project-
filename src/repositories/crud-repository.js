@@ -10,7 +10,7 @@ class crudRepository {
         
     }
     async destroy(data){
-       
+            
             const response = await this.model.destroy({
                 where:{
                     id:data
