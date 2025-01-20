@@ -16,6 +16,9 @@ class crudRepository {
                     id:data
                 }
             });
+            if(!response){
+                throw new AppError('Airplane not found', StatusCodes.NOT_FOUND);  // 404 Not Found error
+            }
             return response;
        
     }
