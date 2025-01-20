@@ -1,3 +1,5 @@
+const {StatusCodes} = require('http-status-codes');
+const AppError = require('../utils/errors/app-error')
 class crudRepository {
     constructor(model){
         this.model = model;
@@ -21,6 +23,9 @@ class crudRepository {
     async get(data){
         
             const response = await this.model.findByPk(data);
+            if(!response){
+                throw new AppError('Airplane not found', StatusCodes.NOT_FOUND);  // 404 Not Found error
+            }
             return response;
         }
         
