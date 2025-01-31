@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Airport.init({
     name: {
-      tyepe:DataTypes.STRING,
+      type:DataTypes.STRING,
       allowNull: false,
       unique: true
     },

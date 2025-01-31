@@ -18,14 +18,26 @@ module.exports = (sequelize, DataTypes) => {
      })
     }
   }
-  City.init({
-    name: DataTypes.STRING,
-    unique:true,
-    allowNull: false,
-  }, {
-    sequelize,
-    modelName: 'City',
-
-  });
+  City.init(
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      name: {
+        type: DataTypes.STRING,
+        unique: true, // Moved inside `name`
+        allowNull: false,
+      },
+    },
+    {
+      sequelize,
+      modelName: 'City',
+      tableName: 'cities', // Ensure correct table name
+      timestamps: true, // Keep timestamps
+      freezeTableName: true, // Prevent automatic pluralization
+    }
+  );
   return City;
 };
