@@ -9,4 +9,8 @@ router
         flightMiddlewares.validateCreateRequest,  // middleware to validate the airplane request data
         flightController.createFlight);
 
+ // /api/v1/flight?trips=MUM-DEL GET
+router
+      .get('/', 
+        flightController.getAllFlights);
 module.exports = router;

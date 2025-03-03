@@ -46,18 +46,20 @@ async function createFlight(req, res) {
 }
 
 /**
- * get :/ airportsAll
+ * get :/ getFlightsall
  * req-body : {}
  *
  */
-async function getAllAirports(req, res) {
+async function getAllFlights(req, res) {
   try {
-    const allAirports = await AirportService.getAllAirports();
-    SuccessResponse.data = allAirports;
+    const flight = await FlightService.getAllFlights(req.query);
+    SuccessResponse.data = flight;
 
     return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
+    
     ErrorResponse.error = error;
+    console.log(ErrorResponse);
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }
@@ -67,17 +69,18 @@ async function getAllAirports(req, res) {
  * req-body : {}
  *
  */
-async function getAirport(req, res) {
-  try {
-    const getAirport = await AirportService.getAirport(req.params.id);
-    SuccessResponse.data = getAirport;
+// async function getAirport(req, res) {
+//   try {
+//     const getAirport = await AirportService.getAirport(req.params.id);
+//     SuccessResponse.data = getAirport;
 
-    return res.status(StatusCodes.OK).json(SuccessResponse);
-  } catch (error) {
-    ErrorResponse.error = error;
-    return res.status(error.statusCode).json(ErrorResponse);
-  }
-}
+//     return res.status(StatusCodes.OK).json(SuccessResponse);
+//   } catch (error) {
+//     ErrorResponse.error = error;
+//     return res.status(error.statusCode).json(ErrorResponse);
+//   }
+// }
+
 
 /**
  * DELETE :/ airports/:id
@@ -116,6 +119,7 @@ async function getAirport(req, res) {
 
 module.exports = {
     createFlight,
+    getAllFlights,
 //   getAllAirports,
   //   updateAirport,
 };
